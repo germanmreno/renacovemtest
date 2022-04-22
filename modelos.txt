@@ -1,0 +1,20 @@
+id, nombre, rif, numalianza, direccion fiscal, estado, municipio, parroquia, representante, telefonorepresentante, correorepresentante, cedularepresentante, rumrepresentante, tipoactividad, actividadminera, descripcionactminera
+
+Modelo JSON:
+{
+    "nombre": "Compañía de Calciterita", 
+    "rif": "V300010020", 
+    "numalianza": "10", 
+    "direccion fiscal": "El Valle",
+    "estado": "Distrito Capital",
+    "municipio": "Libertador", 
+    "parroquia": "El Valle",
+    "representante": "Desiree Perez",
+    "telefonorepresentante": "04122002020", 
+    "correorepresentante": "desiree@gmail.com", 
+    "cedularepresentante": "24001002", 
+    "rumrepresentante": "46859", 
+    "tipoactividad": "Compra/Venta", 
+    "actividadminera": "Calciterita", 
+    "descripcionactminera": "Vendemos Calciterita"
+}
