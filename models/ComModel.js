@@ -15,9 +15,20 @@ const CompanyModel = db.define("companies", {
   correorepresentante: { type: DataTypes.STRING },
   cedularepresentante: { type: DataTypes.STRING },
   rumrepresentante: { type: DataTypes.STRING },
-  tipoactividad: { type: DataTypes.STRING },
-  actividadminera: { type: DataTypes.STRING },
+  tipoactividad: { type: DataTypes.JSON },
+  actividadminera: { type: DataTypes.JSON },
   descripcionactminera: { type: DataTypes.STRING },
+  nombreencargado: { type: DataTypes.STRING },
+  cedulaencargado: { type: DataTypes.STRING },
+  numempleados: { type: DataTypes.STRING },
+  nombreempleados: { type: DataTypes.STRING },
+  cedulaempleados: { type: DataTypes.STRING },
+  cargoempleados: { type: DataTypes.STRING },
+  medidacomercio: { type: DataTypes.STRING },
+  inventario: { type: DataTypes.JSON },
+  promediooro: { type: DataTypes.STRING },
+  promedioganancia: { type: DataTypes.STRING },
+  porcentajecompra: { type: DataTypes.STRING },
 });
 
 export default CompanyModel;
