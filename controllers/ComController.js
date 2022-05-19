@@ -74,25 +74,46 @@ export const loginUser = async (req, res) => {
   }
 };
 
-//Verificar JWT
+//Verificar registro de empresa
 
-// export const authHome = async (req, res) => {
-//   const { authorization } = req.headers;
+export const authCompany = async (req, res) => {
+  const { jwt } = req.body;
+  const encoder = new TextEncoder();
+  const {
+    payload: { guid },
+  } = await jwtVerify(jwt, encoder.encode(process.env.JWT_PRIVATE_KEY));
 
-//   if (!authorization) return res.status(401);
+  try {
+    const company = await CompanyModel.findByPk(guid);
+    if (company === null) {
+      res.json(false);
+    } else {
+      res.json(true);
+    }
+  } catch (err) {
+    res.json({ message: error.message });
+  }
+};
 
-//   try {
-//     const encoder = new TextEncoder();
-//     const { payload } = await jwtVerify(
-//       authorization,
-//       encoder.encode(process.env.JWT_PRIVATE_KEY)
-//     );
+//Obtenemos la data de las compañías
+export const companyData = async (req, res) => {
+  const { jwt } = req.body; //req.body = {}
+  const encoder = new TextEncoder();
+  const {
+    payload: { guid },
+  } = await jwtVerify(jwt, encoder.encode(process.env.JWT_PRIVATE_KEY));
 
-//     console.log(payload);
-//   } catch (err) {
-//     res.redirect("/");
-//   }
-// };
+  try {
+    const company = await CompanyModel.findByPk(guid);
+    if (company === null) {
+      res.json({ message: "Ocurrió un error" });
+    } else {
+      res.json(company);
+    }
+  } catch (err) {
+    res.json({ message: error.message });
+  }
+};
 
 //Mostrar todos los registros
 export const getAllCompanies = async (req, res) => {
@@ -121,14 +142,18 @@ export const getCompany = async (req, res) => {
 //Registrar compañía
 export const registerCompany = async (req, res) => {
   try {
+    const numRegistro = Math.random().toString(10).substring(9);
     const { guid: jwt } = req.body;
-    console.log(jwt);
+
     const encoder = new TextEncoder();
+
     const {
       payload: { guid },
     } = await jwtVerify(jwt, encoder.encode(process.env.JWT_PRIVATE_KEY));
+    //Cambiamos el jwt por el guid confirmado
     req.body.guid = guid;
-    console.log(req.body);
+    req.body.numregistro = numRegistro;
+
     await CompanyModel.create(req.body);
     res.json({
       message: "La compañía se ha registrado correctamente",
