@@ -3,6 +3,7 @@ import db from "../database/db.js";
 import { DataTypes } from "sequelize";
 
 const CompanyModel = db.define("companies", {
+  guid: { type: DataTypes.UUID, primaryKey: true },
   nombre: { type: DataTypes.STRING },
   rif: { type: DataTypes.STRING },
   numalianza: { type: DataTypes.STRING },

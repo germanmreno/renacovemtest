@@ -74,23 +74,25 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const authHome = async (req, res) => {
-  const { authorization } = req.headers;
+//Verificar JWT
 
-  if (!authorization) return res.status(401);
+// export const authHome = async (req, res) => {
+//   const { authorization } = req.headers;
 
-  try {
-    const encoder = new TextEncoder();
-    const { payload } = await jwtVerify(
-      authorization,
-      encoder.encode(process.env.JWT_PRIVATE_KEY)
-    );
+//   if (!authorization) return res.status(401);
 
-    console.log(payload);
-  } catch (err) {
-    res.redirect("/");
-  }
-};
+//   try {
+//     const encoder = new TextEncoder();
+//     const { payload } = await jwtVerify(
+//       authorization,
+//       encoder.encode(process.env.JWT_PRIVATE_KEY)
+//     );
+
+//     console.log(payload);
+//   } catch (err) {
+//     res.redirect("/");
+//   }
+// };
 
 //Mostrar todos los registros
 export const getAllCompanies = async (req, res) => {
@@ -119,6 +121,14 @@ export const getCompany = async (req, res) => {
 //Registrar compañía
 export const registerCompany = async (req, res) => {
   try {
+    const { guid: jwt } = req.body;
+    console.log(jwt);
+    const encoder = new TextEncoder();
+    const {
+      payload: { guid },
+    } = await jwtVerify(jwt, encoder.encode(process.env.JWT_PRIVATE_KEY));
+    req.body.guid = guid;
+    console.log(req.body);
     await CompanyModel.create(req.body);
     res.json({
       message: "La compañía se ha registrado correctamente",
