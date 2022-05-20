@@ -1,12 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import fileUpload from "express-fileupload";
 
 import db from "./database/db.js";
 
 import comRouter from "./routes/routes.js";
 
 const app = express();
+
+app.use(fileUpload());
 
 dotenv.config();
 
