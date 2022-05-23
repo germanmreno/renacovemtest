@@ -58,7 +58,7 @@ export const loginUser = async (req, res) => {
           typ: "JWT",
         })
         .setIssuedAt()
-        .setExpirationTime("2h")
+        .setExpirationTime("24h")
         .sign(encoder.encode(process.env.JWT_PRIVATE_KEY));
 
       return res.json({
