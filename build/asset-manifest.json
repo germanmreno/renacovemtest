@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.499d4d14.css",
-    "main.js": "/static/js/main.b97d094f.js",
+    "main.js": "/static/js/main.ea04eebb.js",
     "static/media/backgroundcvm.png": "/static/media/backgroundcvm.5fe9fa3aed72470547bd.png",
     "static/media/comercializacion-logo.png": "/static/media/comercializacion-logo.6c060587a22a6ac5bf70.png",
     "static/media/logo-gobierno.png": "/static/media/logo-gobierno.a846434d7cdb78d29979.png",
@@ -9,10 +9,10 @@
     "static/media/conthrax-sb-webfont.woff2": "/static/media/conthrax-sb-webfont.d3c2dd3615e7fe3ad967.woff2",
     "index.html": "/index.html",
     "main.499d4d14.css.map": "/static/css/main.499d4d14.css.map",
-    "main.b97d094f.js.map": "/static/js/main.b97d094f.js.map"
+    "main.ea04eebb.js.map": "/static/js/main.ea04eebb.js.map"
   },
   "entrypoints": [
     "static/css/main.499d4d14.css",
-    "static/js/main.b97d094f.js"
+    "static/js/main.ea04eebb.js"
   ]
 }
